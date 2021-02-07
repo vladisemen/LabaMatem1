@@ -1,19 +1,15 @@
 import random
 import math
-
-
 def disper():
     result = 0
     for i in list_elements:
         result += i - mat_ojidanie
-    result = 1 / (N - 1) * result
-    print(result)
-
-
+    result = 1/(N - 1) * result
+    print (result)
 random.seed()
 sum = 0
 kol = 0
-N = 1000  # кол-во итераций
+N = 100 # кол-во итераций
 a = 0  # начало интервала
 b = 100  # конец интервала
 count_segemnts = math.ceil(1 + 3.22 * math.log(N))  # кол-во отрезков
@@ -44,6 +40,7 @@ result = 0
 for item in range(len(numbers1) - 1):
     result += numbers1[item] - ideal
 
+
 print("Кол-во интервалов:")
 print(count_segemnts)
 print("Значение Хи-квадрат")
@@ -53,4 +50,5 @@ mat_ojidanie = sum / N
 print(mat_ojidanie)
 print("Дисперсия")
 disper()
+
 
