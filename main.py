@@ -4,7 +4,7 @@ import math
 random.seed()
 sum = 0
 kol = 0
-N = 10  # кол-во итераций
+N = 100  # кол-во итераций
 a = 0  # начало интервала
 b = 100  # конец интервала
 count_segemnts = math.ceil(1 + 3.22 * math.log(N))  # кол-во отрезков
@@ -15,6 +15,7 @@ for i in range(N):
     sum += num1
 
 local_segment = count_segemnts
+
 numbers1 = []
 for i in range(count_segemnts):
     numbers1.append(0)
@@ -26,13 +27,16 @@ for item in sorted(list_elements):
         i += 1
     numbers1[i] += 1
 result = 0
+
 variable = count_segemnts / N
-ideal = N/count_segemnts
-for item in numbers1:
-    result += item - ideal
+ideal = N / count_segemnts
+
+for item in range(len(numbers1) - 1):
+    result += numbers1[item] - ideal
+
 print("Кол-во интервалов:")
 print(count_segemnts)
 print("Значение Хи-квадрат")
-print(math.pow(result, 2) *variable)
+print(math.pow(result, 2) * variable)
 print('Оценка мат ожидания для ' + str(N) + ' итераций')
 print(sum / N)
