@@ -21,12 +21,26 @@ a = settings['a']  # начало интервала
 b = settings['b']  # конец интервала
 
 
+def write_in_file():
+    file = open("otus.txt", "w")
+    file.write("Кол-во интервалов: ")
+    file.write(str(count_segemnts))
+    file.write("\nЗначение Хи-квадрат: ")
+    file.write(str(math.pow(result, 2) * variable))
+    file.write('\nОценка мат ожидания для ' + str(N) + ' итераций: ')
+    mat_ojidanie = sum / N
+    file.write(str(mat_ojidanie))
+    file.write("\nДисперсия")
+    file.write(str(disper()))
+    file.close()
+
+
 def disper():
     result = 0
     for i in list_elements:
         result += i - mat_ojidanie
-    result = 1/(N - 1) * result
-    print(result)
+    result = 1 / (N - 1) * result
+    return result
 
 
 count_segemnts = math.ceil(1 + 3.22 * math.log(N))  # кол-во отрезков
@@ -45,7 +59,7 @@ for i in range(count_segemnts):
 i = 0
 temp_sorted_list_element = sorted(list_elements)
 for item in temp_sorted_list_element:
-    if (item >= local_segment):
+    if item >= local_segment:
         local_segment += (b - a) / count_segemnts
         i += 1
     numbers1[i] += 1
@@ -57,7 +71,6 @@ result = 0
 for item in range(len(numbers1) - 1):
     result += numbers1[item] - ideal
 
-
 print("Кол-во интервалов:")
 print(count_segemnts)
 print("Значение Хи-квадрат")
@@ -66,4 +79,5 @@ print('Оценка мат ожидания для ' + str(N) + ' итераци
 mat_ojidanie = sum / N
 print(mat_ojidanie)
 print("Дисперсия")
-disper()
+print(disper())
+write_in_file()
