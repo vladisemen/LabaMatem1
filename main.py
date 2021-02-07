@@ -1,17 +1,34 @@
 import random
 import math
+import json
+
+random.seed()
+
+
+def read_settings():
+    with open('settings.json', 'r', encoding='utf-8') as f:  # открыли файл с данными
+        settings = json.load(f)
+        return settings
+
+
+settings = read_settings()
+print()
+
+sum = 0
+kol = 0
+N = settings['N']  # кол-во итераций
+a = settings['a']  # начало интервала
+b = settings['b']  # конец интервала
+
+
 def disper():
     result = 0
     for i in list_elements:
         result += i - mat_ojidanie
     result = 1/(N - 1) * result
-    print (result)
-random.seed()
-sum = 0
-kol = 0
-N = 100 # кол-во итераций
-a = 0  # начало интервала
-b = 100  # конец интервала
+    print(result)
+
+
 count_segemnts = math.ceil(1 + 3.22 * math.log(N))  # кол-во отрезков
 list_elements = list()
 for i in range(N):
@@ -50,5 +67,3 @@ mat_ojidanie = sum / N
 print(mat_ojidanie)
 print("Дисперсия")
 disper()
-
-
