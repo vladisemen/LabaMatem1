@@ -42,20 +42,19 @@ def disper():
     result = 1 / (N - 1) * result
     return result
 
-#a+(b-a)*R
+
+# a+(b-a)*R
 count_segemnts = math.ceil(1 + 3.22 * math.log(N))  # кол-во отрезков
 list_elements = list()
 for i in range(N):
-    num1 = random.random() * b
+    num1 = random.random() * (b-a)
     list_elements.append(num1)
     sum += num1
-
-
 
 numbers1 = []
 for i in range(count_segemnts):
     numbers1.append(0)
-local_segment = (b-a)/count_segemnts
+local_segment = (b - a) / count_segemnts
 i = 0
 temp_sorted_list_element = sorted(list_elements)
 for item in temp_sorted_list_element:
@@ -68,12 +67,10 @@ variable = count_segemnts / N
 ideal = N / count_segemnts
 
 result = 0
-j = 1
-for item in range(len(numbers1) - 1):
-    print('кол-во попаданий в ' + str(j) + ' интервале')
+for item in range(len(numbers1)):
+    print('кол-во попаданий в ' + str(item) + ' интервале')
     print(numbers1[item])
-    result += numbers1[item] - ideal
-    j += 1
+    result += numbers1[item] - ideal - 1
 
 print("Кол-во интервалов:")
 print(count_segemnts)
