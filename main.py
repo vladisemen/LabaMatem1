@@ -47,7 +47,7 @@ def disper():
 count_segemnts = math.ceil(1 + 3.22 * math.log(N))  # кол-во отрезков
 list_elements = list()
 for i in range(N):
-    num1 = random.random() * (b-a)
+    num1 = a + random.random() * (b-a)
     list_elements.append(num1)
     sum += num1
 
